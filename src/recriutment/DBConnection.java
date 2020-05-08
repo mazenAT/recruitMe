@@ -59,6 +59,43 @@ public class DBConnection {
         }
         return result;
     }
+     
+     public boolean RetrieveApplicationStatus(int app_id) {
+        boolean app_status = false;
+        try {
+            String sql = ("SELECT app_status FROM `application` WHERE app_id = '" + app_id +"' ");
+            rs = st.executeQuery(sql);
+            if(rs.first()){
+                app_status = rs.getBoolean("app_status");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+
+        }
+        return app_status;
+
+    }
+     
+     
+      public void updateAppStatus(int app_id, boolean app_status ) {
+        try {
+            if(app_status == true){
+                String sql = ("INSERT INTO application (app_status) WHERE app_id = '"+ app_id +"' "  +
+                    "VALUES ('" + app_status + "' )");
+                st.executeUpdate(sql);
+            }
+            else if(app_status == false){
+                String sq2 = ("DELETE * FROM application WHERE app_id = '"+ app_id +"' ");
+                st.executeLargeUpdate(sq2);
+            }
+            
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public void InsertVacancy(String title, String type, String about, String requirements, String educationLevel, String languages, float salary, int openPositions, int emp_id) {
         try {
