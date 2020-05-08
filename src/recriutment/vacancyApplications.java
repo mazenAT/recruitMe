@@ -25,6 +25,7 @@ public class vacancyApplications extends javax.swing.JFrame {
         this.currID=currid;
         D=new DBConnection();
         initComponents();
+        getApplications();
     }
   public vacancyApplications() {
         initComponents();
