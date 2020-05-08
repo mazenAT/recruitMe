@@ -14,13 +14,13 @@ public class EGUI extends javax.swing.JFrame {
     /**
      * Creates new form EGUI
      */
-     private int currID = 0;
+     private int currID ;
     private DBConnection D;
     private String currName;
-    public EGUI(int currID) {
+    public EGUI(int curr_ID) {
         initComponents();
         D=new DBConnection();
-         this.currID = currID;
+         this.currID = curr_ID;
         currName = D.RetrieveCurrentUserName(currID);
         empName.setText(currName);
     }

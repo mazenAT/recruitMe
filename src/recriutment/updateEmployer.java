@@ -5,6 +5,8 @@
  */
 package recriutment;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mazen174825
@@ -14,10 +16,12 @@ public class updateEmployer extends javax.swing.JFrame {
     /**
      * Creates new form updateEmployer
      */
-     int id;
+     int UP_id;
+   
       private DBConnection D;
-    public updateEmployer(int id) {
-         this.id = id;
+    public updateEmployer(int up_id) {
+         this.UP_id = up_id;
+        
          D=new DBConnection();
         initComponents();
     }
@@ -129,7 +133,8 @@ public class updateEmployer extends javax.swing.JFrame {
         String password = jTextField2.getText();
         String companyWebsite = jTextField3.getText();
         String Companyaddress = jTextField4.getText();
-        D.updateEmployer(Email, password, companyWebsite, Companyaddress, id);
+        D.updateEmployer(Email, password, companyWebsite, Companyaddress, UP_id);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

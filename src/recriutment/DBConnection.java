@@ -63,7 +63,7 @@ public class DBConnection {
      public boolean RetrieveApplicationStatus(int app_id) {
         boolean app_status = false;
         try {
-            String sql = ("SELECT app_status FROM `application` WHERE app_id = '" + app_id +"' ");
+            String sql = ("SELECT 'app_status' FROM `application` WHERE 'app_id' = '" + app_id + "' ");
             rs = st.executeQuery(sql);
             if(rs.first()){
                 app_status = rs.getBoolean("app_status");
@@ -82,13 +82,14 @@ public class DBConnection {
       public void updateAppStatus(int app_id, boolean app_status ) {
         try {
             if(app_status == true){
-                String sql = ("INSERT INTO application (app_status) WHERE app_id = '"+ app_id +"' "  +
+                String sql = ("INSERT INTO 'application' ('app_status') WHERE app_id = '"+ app_id +"' "  +
                     "VALUES ('" + app_status + "' )");
                 st.executeUpdate(sql);
             }
             else if(app_status == false){
-                String sq2 = ("DELETE * FROM application WHERE app_id = '"+ app_id +"' ");
-                st.executeLargeUpdate(sq2);
+                String sql2 = ("DELETE * FROM `application` WHERE 'app_id' = '"+ app_id +"' ");
+                st.executeUpdate(sql2);
+                
             }
             
             
@@ -251,9 +252,9 @@ public class DBConnection {
     }
 public void updateJobseeker(String Email, String password, String degree,String careerlvl , int id){
     try{
-        String sql = "update user set email = " + Email + "set name = '" + password + "'"+"where U_id = "+ id ;
+        String sql = "UPDATE 'user' SET 'u_email' = '" + Email +"' " + "SET 'u_password' = '" + password + "' " + " where 'u_id' = '" + id + "' " ;
         st.executeUpdate(sql);
-        String sql1 = "update jobseeker set js_degree = " + degree + "set js_careerlvl = '" + careerlvl + "'"+"where js_id = "+ id ;
+        String sql1 = "UPDATE 'jobseeker' SET 'js_degree' = '" + degree +"' " + " SET 'js_careerlvl' = '" + careerlvl + "' " + " WHERE 'u_id' = '" + id + "' " ;
         st.executeUpdate(sql1);
     }catch(Exception e){
         
@@ -261,14 +262,17 @@ public void updateJobseeker(String Email, String password, String degree,String 
 }
 public void updateEmployer(String Email, String password, String companyWbsite,String companyAddress , int id){
     try{
-        String sql = "update user set email = " + Email + "set name = '" + password + "'"+"where U_id = "+ id ;
+        String sql = ("UPDATE 'user' SET 'u_email' = '" + Email +"' " + "SET 'u_password' = '" + password + "' " + " where 'u_id' = '" + id + "' " );
         st.executeUpdate(sql);
-        String sql1 = "update employer set emp_company_website = " + companyWbsite + "set emp_company_address = '" + companyAddress + "'"+"where js_id = "+ id ;
+        String sql1 = ("UPDATE 'employer' SET 'emp_company_website' = '" + companyWbsite +"' " + " SET 'emp_company_address' = '" + companyAddress + "' " + " WHERE 'u_id' = '" + id + "' ") ;
         st.executeUpdate(sql1);
+        
+        
     }catch(Exception e){
         
     }
 }
+
 
 
 }
