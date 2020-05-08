@@ -251,9 +251,9 @@ public class DBConnection {
     }
 public void updateJobseeker(String Email, String password, String degree,String careerlvl , int id){
     try{
-        String sql = "update user set email = " + Email + "set name = '" + password + "'"+"where U_id = "+ id ;
+        String sql = "update user set u_email = '" + Email + "'"+"set u_password = '" + password + "'"+"where U_id = '"+ id ;
         st.executeUpdate(sql);
-        String sql1 = "update jobseeker set js_degree = " + degree + "set js_careerlvl = '" + careerlvl + "'"+"where js_id = "+ id ;
+        String sql1 = "update jobseeker set js_degree = '" + degree + "'"+"set js_careerlvl = '" + careerlvl + "'"+"where js_id = '"+ id ;
         st.executeUpdate(sql1);
     }catch(Exception e){
         
@@ -261,9 +261,9 @@ public void updateJobseeker(String Email, String password, String degree,String 
 }
 public void updateEmployer(String Email, String password, String companyWbsite,String companyAddress , int id){
     try{
-        String sql = "update user set email = " + Email + "set name = '" + password + "'"+"where U_id = "+ id ;
+        String sql = "update user set u_email = '" + Email + "'"+"set u_password = '" + password + "'"+"where U_id = '"+ id ;
         st.executeUpdate(sql);
-        String sql1 = "update employer set emp_company_website = " + companyWbsite + "set emp_company_address = '" + companyAddress + "'"+"where js_id = "+ id ;
+        String sql1 = "update employer set emp_company_website = '" + companyWbsite +"'"+ "set emp_company_address = '" + companyAddress + "'"+"where js_id = '"+ id ;
         st.executeUpdate(sql1);
     }catch(Exception e){
         
